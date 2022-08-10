@@ -1,0 +1,90 @@
+PKB Shortcodes - User Guide
+
+<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/SNsH-TH2Z98" frameborder="0" allowfullscreen></iframe></div>
+
+## Introduction
+
+PKB Shortcodes provides you an ability to create custom macros and convert complex HTML code to BBCode. It is the administrative tool that helps site integrators to implement various code with shortcode that keeps the content simple and clean. The widget has flexible structure and provide creation of complex macros.
+
+After installation PKB Shortcodes is ready to use, but comes without the set of predefined shortcodes, so you need to create custom shortcodes according to the widget syntax and your tasks.
+
+## Requirements
+
+Minimal requirement to the platform: Pagekit 1.0.7 and higher.
+
+<div class="uk-alert uk-alert-danger">Please always clear browser cache after updating the widget to a newer version (Pagekit caches its back-end side).</div>
+
+## Configuration
+
+After installation the list of items is empty. Now let's create a macros. To do that go to Administrator Panel > Dashboard > Shortcodes and click on Add Shortcode button in top-right toolbar.
+
+<figure class="uk-thumbnail">
+  <img src="/images/docs/pagekit/pkb-shortcodes-doc-example4.png" alt="PKB Shortcodes - list of created shortcodes">
+  <figcaption class="uk-thumbnail-caption">PKB Shortcodes - list of created shortcodes</figcaption>
+</figure>
+
+The widget has special rules for shortcodes. A Macros term is used together with Shortcodes that means the same. When you add a new shortcode, you’ll see the following available fields:
+
+* Name
+* Shortcode Macros
+* Shortcode HTML
+
+<figure class="uk-thumbnail">
+  <img src="/images/docs/pagekit/pkb-shortcodes-doc-example5.png" alt="Add a custom macros in PKB Shortcodes">
+  <figcaption class="uk-thumbnail-caption">Add a custom macros in PKB Shortcodes</figcaption>
+</figure>
+
+On the right sidebar you can assign an icon to the macros, change its status (Published / Unpublished) and set the date of publication.
+
+Name field and its associated icon will appear in the inline editor when you insert macros from the list. Shortcode Macro is a field where you’re constructing the macros and Shortcode HTML is a text-area to add output HTML text.
+
+<div class="uk-alert">The main advantage of shortcoding is the support of variables.</div>
+
+To name a variable the **{}** symbols are used (curly brackets). To name a macros the **[]** symbols are used (square brackets).
+
+**Example**
+
+We need to add a "**div**" container that includes text with special formatting and **.info** class is required.
+
+<pre><code>&#60;div class="info"&#62;Text&#60;/div&#62;</code></pre>
+
+We have one Text variable as a minimum. To convert it into the variable we need to use **{}** symbols. For macros we should use **[]** symbols.
+
+<figure class="uk-thumbnail">
+  <img src="/images/docs/pagekit/pkb-shortcodes-doc-example1.png" alt="Exmaple of creating macros in PKB Shortcodes">
+  <figcaption class="uk-thumbnail-caption">Exmaple of creating macros in PKB Shortcodes</figcaption>
+</figure>
+
+As a result our shortcode will look this:
+
+<pre><code>//Shortcode
+&#91;info&#93;{text}&#91;/info&#93;
+//html
+&#60;div class="info"&#62;{text}&#60;/div&#62;</code></pre>
+    
+If the text won’t be large, we can minify the shortcode:
+<pre><code>&#91;info text="{text}" /&#93;</code></pre>
+
+Also we can complicate the task and process **.info** class as a variable. It will look like this:
+
+<pre><code>//Shortcode
+&#91;block class="{class}"&#93;{text}&#91;/block&#93;
+//html
+&#60;div class="{class}"&#62;{text}&#60;/div&#62;</code></pre>
+
+<figure class="uk-thumbnail">
+  <img src="/images/docs/pagekit/pkb-shortcodes-doc-example2.png" alt="Exmaple of creating macros in PKB Shortcodes">
+  <figcaption class="uk-thumbnail-caption">Exmaple of creating macros in PKB Shortcodes</figcaption>
+</figure>
+
+The quotes are in use in case when the variable is placed inside of square brackets.
+
+<div class="uk-alert">Note: You can insert a shortcode inside of another one. To do that, you must place custom {text} variable in the place where another shortcode will be used.</div>
+
+<div class="uk-alert uk-alert-danger">NOTE: Only a single macros in the given string of a text is allowed to use. In case of multiple classes to be used within a single macro, put them in a new macro and use them accordingly.</div>
+
+### Use of Uikit elements
+
+It is so easy now to use various elements of this front-end framework whfich is core part of Pagekit by default. We recommend you to examine core and extended components on official Uikit site for best understanding.
+
+<div class="uk-alert">If you're going to use any of Uikit components, please do not forget to include all required files (CSS and JS) related to the Uikit component. It can be done in Pagekit settings (Dashboard > Site > Settings > Code). More information which files must be included can be found here: <a href="https://getuikit.com/v2/index.html" rel="nofollow">Uikit2</a></div>
